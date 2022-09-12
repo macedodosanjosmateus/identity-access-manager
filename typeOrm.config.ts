@@ -1,7 +1,7 @@
 import { DataSource } from 'typeorm'
 import { ConfigService } from '@nestjs/config'
 import { config } from 'dotenv'
-import { User } from '@/database/models/user.entity'
+import { UserEntity } from '@/database/models/user.entity'
 
 config()
 
@@ -14,6 +14,6 @@ export default new DataSource({
   username: configService.get('SQL_DB_USERNAME'),
   password: configService.get('SQL_DB_PASSWORD'),
   database: configService.get('SQL_DATABASE'),
-  entities: [User],
+  entities: [UserEntity],
   migrations: ['src/database/migrations/*.ts']
 })
