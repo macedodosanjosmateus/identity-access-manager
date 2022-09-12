@@ -18,6 +18,7 @@ module.exports = {
   },
   collectCoverageFrom: [
     '<rootDir>/src/**/*.{js,jsx,ts,tsx}',
+    '!<rootDir>/src/database/migrations/**',
     '!<rootDir>/src/**/main.{js,jsx,ts,tsx}',
     '!<rootDir>/src/**/module.alias.{js,jsx,ts,tsx}',
     '!<rootDir>/src/**/*.*spec.{js,jsx,ts,tsx}'
