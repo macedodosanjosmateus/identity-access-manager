@@ -1,6 +1,18 @@
 version: "3.7"
 services:
-  
+  sql:
+    container_name: sql
+    image: mysql:latest
+    command: --default-authentication-plugin=mysql_native_password
+    expose:
+      - 3306
+    ports:
+      - 3306:3306
+    volumes:
+      - ./docker/database.sql:/docker-entrypoint-initdb.d/init.sql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+
   iam:
     image: node:16-alpine
     container_name: iam
