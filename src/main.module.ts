@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common'
 import { ConfigModule } from '@nestjs/config'
 import { CommonModule } from '@/common/common.module'
 import { appConfig } from '@/config/app.config'
+import { DatabaseModule } from './database/database.module';
 
 @Module({
   imports: [
@@ -12,7 +13,8 @@ import { appConfig } from '@/config/app.config'
       cache: true
     }),
     ConfigModule.forFeature(appConfig()),
-    CommonModule
+    CommonModule,
+    DatabaseModule
   ]
 })
 export class MainModule {}
