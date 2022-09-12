@@ -35,5 +35,10 @@ describe('UserAggregate', () => {
         updatedAt: userEntity.updatedAt
       })
     })
+
+    it('should throw a error if call without provide a user entity', () => {
+      userAggregate = new UserAggregate(undefined)
+      expect(() => userAggregate.getFormattedData()).toThrowError('User is not defined')
+    })
   })
 })
