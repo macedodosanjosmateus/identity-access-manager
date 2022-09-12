@@ -1,4 +1,4 @@
-# NestJS StartKit
+# Identity Access Manager
 
 ## Ajustes e melhorias
 
@@ -19,7 +19,7 @@ Antes de começar, verifique se você atendeu aos seguintes requisitos:
 Para clonar o repositório `<nestjs-starkit>`, siga estas etapas:
 
 ```bash
-git clone https://github.com/mateusmacedo/nestjs-startkit.git
+git clone https://github.com/mateusmacedo/identity-access-manager.git
 ```
 
 Para instalar as dependências `<nestjs-starkit>`, siga estas etapas:

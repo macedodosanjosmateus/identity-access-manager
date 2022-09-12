@@ -1,20 +1,20 @@
 {
-  "name": "nestjs-startkit",
-  "version": "0.2.0",
-  "description": "NestJS Startkit",
+  "name": "identity-access-manager",
+  "version": "0.0.0",
+  "description": "Identity Access Manager",
   "author": {
     "name": "Mateus Macedo Dos Anjos",
     "email": "macedodosanjosmateus@gmail.com"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/mateusmacedo/nestjs-startkit.git"
+    "url": "https://github.com/mateusmacedo/identity-access-manager.git"
   },
   "bugs": {
-    "url": "https://github.com/mateusmacedo/nestjs-startkit/issues",
+    "url": "https://github.com/mateusmacedo/identity-access-manager/issues",
     "email": "macedodosanjosmateus@gmail.com"
   },
-  "private": true,
+  "private": false,
   "license": "UNLICENSED",
   "scripts": {
     "prebuild": "rimraf dist",
@@ -33,6 +33,7 @@
     "test:cov": "yarn test --coverage --config ./jest-unit.config.js",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --passWithNoTests --runInBand --no-cache --config ./jest-unit.config.js",
     "test:e2e": "yarn test --config ./jest-e2e.config.js",
+    "test:e2e-debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --passWithNoTests --runInBand --no-cache --config ./jest-unit.config.js",
     "release": "standard-version",
     "changelog": "standard-version && auto-changelog -p -u --commit-limit false --hide-credit --template changelog-template.hbs",
     "changelog:minor": "standard-version --release-as minor && auto-changelog -p -u --commit-limit false --hide-credit --template changelog-template.hbs",
