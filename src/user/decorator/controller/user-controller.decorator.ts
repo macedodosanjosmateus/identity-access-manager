@@ -1,6 +1,13 @@
 import { CreateUserDto } from '@/user/dto/create-user.dto'
-import { applyDecorators, Controller, Post } from '@nestjs/common'
-import { ApiBadRequestResponse, ApiBody, ApiCreatedResponse, ApiTags } from '@nestjs/swagger'
+import { applyDecorators, Controller, Get, Post } from '@nestjs/common'
+import {
+  ApiBadRequestResponse,
+  ApiBody,
+  ApiCreatedResponse,
+  ApiNotFoundResponse,
+  ApiOkResponse,
+  ApiTags
+} from '@nestjs/swagger'
 
 export function UserController() {
   return applyDecorators(ApiTags('Users'), Controller('user'))
@@ -15,6 +22,18 @@ export function Create() {
     }),
     ApiBadRequestResponse({
       description: 'Invalid data supplied.'
+    })
+  )
+}
+
+export function FindAll() {
+  return applyDecorators(
+    Get(),
+    ApiOkResponse({
+      description: 'The records has been successfully recovered.'
+    }),
+    ApiNotFoundResponse({
+      description: 'The records is empty.'
     })
   )
 }
