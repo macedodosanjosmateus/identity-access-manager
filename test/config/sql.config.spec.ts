@@ -30,7 +30,7 @@ describe('sqlConfig', () => {
     expect(configs).toHaveProperty('host')
     expect(configs).toHaveProperty('port')
     expect(configs).toHaveProperty('database')
-    expect(configs).toHaveProperty('synchronize')
+    expect(configs).toHaveProperty('autoLoadEntities')
   })
   it('should throw a error if appropriate db configs is not present', async () => {
     const moduleRef = testingModuleBuilder.compile()
