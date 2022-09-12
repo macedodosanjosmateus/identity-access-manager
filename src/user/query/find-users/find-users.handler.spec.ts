@@ -40,5 +40,12 @@ describe('FindUsersHandler', () => {
       expect(userRepository.findAllUsers).toBeCalledTimes(1)
       expect(result).toEqual([expectedResult])
     })
+    it('should a throw error if repository throws', async () => {
+      userRepository = mock<UserRepository>({
+        findAllUsers: jest.fn().mockRejectedValue(new Error('error'))
+      })
+      findUsersHandler = new FindUsersHandler(userRepository)
+      await expect(findUsersHandler.execute()).rejects.toThrowError('error')
+    })
   })
 })
