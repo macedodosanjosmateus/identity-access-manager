@@ -64,5 +64,9 @@ describe('UserService', () => {
       expect(queryBus.execute).toBeCalledWith(new FindUsersQuery())
       expect(queryBus.execute).toBeCalledTimes(1)
     })
+    it('should throw a error if query bus throws', async () => {
+      queryBus.execute = jest.fn().mockRejectedValue(new Error('error'))
+      await expect(service.findAllUsers()).rejects.toThrowError('error')
+    })
   })
 })
