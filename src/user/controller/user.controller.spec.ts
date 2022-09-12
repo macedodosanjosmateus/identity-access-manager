@@ -44,4 +44,13 @@ describe('UserController', () => {
       await expect(controller.create(createDto)).rejects.toThrowError('error')
     })
   })
+
+  describe('findAll', () => {
+    it('should call service find all users correctly', async () => {
+      service.findAllUsers = jest.fn().mockResolvedValueOnce([])
+      await controller.findAll()
+      expect(service.findAllUsers).toBeCalledWith()
+      expect(service.findAllUsers).toBeCalledTimes(1)
+    })
+  })
 })
