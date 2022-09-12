@@ -47,6 +47,11 @@ describe('UserRepository', () => {
       expect(result['user'].email).toEqual(userData.email)
       expect(result['user'].mobile).toEqual(userData.mobile)
     })
+    it('should a throw error if repository throws', async () => {
+      userData = mocker.createUserData()
+      repository.save = jest.fn().mockRejectedValue(new Error('error'))
+      await expect(userRepository.createUser(userData)).rejects.toThrowError('error')
+    })
   })
 
   describe('findUsers', () => {
@@ -59,6 +64,10 @@ describe('UserRepository', () => {
       result.forEach((user) => {
         expect(user).toBeInstanceOf(UserAggregate)
       })
+    })
+    it('should a throw error if repository throws', async () => {
+      repository.find = jest.fn().mockRejectedValue(new Error('error'))
+      await expect(userRepository.findAllUsers()).rejects.toThrowError('error')
     })
   })
 })
