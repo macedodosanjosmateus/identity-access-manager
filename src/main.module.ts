@@ -1,5 +1,6 @@
 import { CommonModule } from '@/common/common.module'
 import { DatabaseModule } from '@/database/database.module'
+import { UserModule } from '@/user/user.module'
 import { Module } from '@nestjs/common'
 import { ConfigModule } from '@nestjs/config'
 
@@ -13,7 +14,8 @@ import { ConfigModule } from '@nestjs/config'
       isGlobal: true
     }),
     CommonModule,
-    DatabaseModule
+    DatabaseModule,
+    UserModule
   ]
 })
 export class MainModule {}
