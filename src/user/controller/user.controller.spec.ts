@@ -38,5 +38,13 @@ describe('UserController', () => {
       expect(service.createUser).toBeCalledWith(createUserDto)
       expect(service.createUser).toBeCalledTimes(1)
     })
+    it('should throw a error with service throws', async () => {
+      const createUserDto = plainToInstance(CreateUserDto, {
+        email: 'dummy@email.com',
+        mobile: '+5511999999999'
+      } as TUserData)
+      service.createUser = jest.fn().mockRejectedValue(new Error('error'))
+      await expect(controller.create(createUserDto)).rejects.toThrowError('error')
+    })
   })
 })
