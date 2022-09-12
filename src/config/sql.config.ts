@@ -9,7 +9,7 @@ export const sqlConfig = () =>
       password: process.env.SQL_DB_PASSWORD,
       host: process.env.SQL_DB_HOST,
       port: parseInt(process.env.SQL_DB_PORT),
-      name: process.env.SQL_DB_NAME,
+      database: process.env.SQL_DB_NAME,
       synchronize: process.env.SQL_DB_SYNCHRONIZE === 'true'
     }
     const schema = Joi.object({
@@ -18,7 +18,7 @@ export const sqlConfig = () =>
       password: Joi.string().required(),
       host: Joi.string().required(),
       port: Joi.number().required(),
-      name: Joi.string().required(),
+      database: Joi.string().required(),
       synchronize: Joi.boolean().required()
     })
     const { error } = schema.validate(values, { abortEarly: false })

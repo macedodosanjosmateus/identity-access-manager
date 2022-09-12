@@ -1,4 +1,4 @@
-import { sqlConfig } from './../../src/config/sql.config'
+import { sqlConfig } from '@/config/sql.config'
 import { ConfigModule, ConfigService } from '@nestjs/config'
 import { Test, TestingModuleBuilder } from '@nestjs/testing'
 
@@ -29,7 +29,7 @@ describe('sqlConfig', () => {
     expect(configs).toHaveProperty('password')
     expect(configs).toHaveProperty('host')
     expect(configs).toHaveProperty('port')
-    expect(configs).toHaveProperty('name')
+    expect(configs).toHaveProperty('database')
     expect(configs).toHaveProperty('synchronize')
   })
   it('should throw a error if appropriate db configs is not present', async () => {
