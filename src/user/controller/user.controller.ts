@@ -5,6 +5,7 @@ import {
   UserController as UserControllerDecorator
 } from '@/user/decorator/controller/user-controller.decorator'
 import { CreateUserDto } from '@/user/dto/create-user.dto'
+import { UserDto } from '@/user/dto/user.dto'
 import { UserService } from '@/user/service/user.service'
 import { Body } from '@nestjs/common'
 
@@ -18,7 +19,7 @@ export class UserController {
   }
 
   @FindAll()
-  async findAll(): Promise<TUser[]> {
+  async findAll(): Promise<UserDto[]> {
     return this.userService.findAllUsers()
   }
 }

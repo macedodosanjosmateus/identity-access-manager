@@ -1,4 +1,5 @@
 import { CreateUserDto } from '@/user/dto/create-user.dto'
+import { UserDto } from '@/user/dto/user.dto'
 import { applyDecorators, Controller, Get, Post } from '@nestjs/common'
 import {
   ApiBadRequestResponse,
@@ -30,7 +31,8 @@ export function FindAll() {
   return applyDecorators(
     Get(),
     ApiOkResponse({
-      description: 'The records has been successfully recovered.'
+      description: 'The records has been successfully recovered.',
+      type: [UserDto]
     }),
     ApiNotFoundResponse({
       description: 'The records is empty.'
