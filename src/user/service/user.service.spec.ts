@@ -48,5 +48,10 @@ describe('UserService', () => {
       expect(commandBus.execute).toBeCalledWith(new CreateUserCommand(data))
       expect(commandBus.execute).toBeCalledTimes(1)
     })
+    it('should throw a error if command bus throws', async () => {
+      const data = mocker.createUserData()
+      commandBus.execute = jest.fn().mockRejectedValue(new Error('error'))
+      await expect(service.createUser(data)).rejects.toThrowError('error')
+    })
   })
 })
