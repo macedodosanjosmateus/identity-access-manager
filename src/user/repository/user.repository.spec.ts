@@ -48,4 +48,17 @@ describe('UserRepository', () => {
       expect(result['user'].mobile).toEqual(userData.mobile)
     })
   })
+
+  describe('findUsers', () => {
+    it('should find all user entities and return a aggregate array', async () => {
+      repository.find = jest.fn().mockResolvedValueOnce([new UserEntity()])
+      const result = await userRepository.findAllUsers()
+      expect(repository.find).toHaveBeenCalledTimes(1)
+      expect(repository.find).toHaveBeenCalledWith()
+      expect(result).toBeInstanceOf(Array)
+      result.forEach((user) => {
+        expect(user).toBeInstanceOf(UserAggregate)
+      })
+    })
+  })
 })
