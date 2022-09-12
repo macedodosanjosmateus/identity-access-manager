@@ -1,0 +1,16 @@
+version: "3.7"
+services:
+  
+  start-kit:
+    image: node:16-alpine
+    container_name: start-kit
+    working_dir: /usr/src/app
+    command: ["yarn", "start:dev"]
+    expose:
+      - 3000
+      - 9229
+    ports:
+      - 3000:3000
+      - 9229:9229
+    volumes:
+      - ./:/usr/src/app:rw
