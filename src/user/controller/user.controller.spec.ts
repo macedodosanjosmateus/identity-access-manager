@@ -52,5 +52,9 @@ describe('UserController', () => {
       expect(service.findAllUsers).toBeCalledWith()
       expect(service.findAllUsers).toBeCalledTimes(1)
     })
+    it('should throw a error when service find all users throws', async () => {
+      service.findAllUsers = jest.fn().mockRejectedValue(new Error('error'))
+      await expect(controller.findAll()).rejects.toThrowError('error')
+    })
   })
 })
