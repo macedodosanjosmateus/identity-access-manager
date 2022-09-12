@@ -16,4 +16,9 @@ export class UserRepository {
     await this.repository.save(userEntity)
     return new UserAggregate(userEntity)
   }
+
+  async findAllUsers(): Promise<UserAggregate[]> {
+    const userEntities = await this.repository.find()
+    return userEntities.map((userEntity) => new UserAggregate(userEntity))
+  }
 }
