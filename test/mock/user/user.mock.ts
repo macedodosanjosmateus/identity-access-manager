@@ -1,4 +1,5 @@
 import { UserEntity } from '@/database/models/user.entity'
+import { UserAggregate } from '@/user/aggregate/user.aggregate'
 import { TUserData } from '@/user/contract/user.type'
 
 export class UserMock {
@@ -17,5 +18,9 @@ export class UserMock {
     userEntity.createdAt = new Date()
     userEntity.updatedAt = new Date()
     return userEntity
+  }
+
+  createUserAggregate(data: UserEntity): UserAggregate {
+    return new UserAggregate(data)
   }
 }
