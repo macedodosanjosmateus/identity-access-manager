@@ -1,6 +1,7 @@
 import { UserMock } from '@/test/mock/user/user.mock'
 import { CreateUserCommand } from '@/user/command/create-user/create-user.command'
 import { TUserData } from '@/user/contract/user.type'
+import { FindUsersQuery } from '@/user/query/find-users/find-users.query'
 import { UserService } from '@/user/service/user.service'
 import { CommandBus, QueryBus } from '@nestjs/cqrs'
 import { Test, TestingModule } from '@nestjs/testing'
@@ -54,6 +55,14 @@ describe('UserService', () => {
       userData = mocker.createUserData()
       commandBus.execute = jest.fn().mockRejectedValue(new Error('error'))
       await expect(service.createUser(userData)).rejects.toThrowError('error')
+    })
+  })
+
+  describe('findAllUsers', () => {
+    it('should create and execute a find users query', async () => {
+      await service.findAllUsers()
+      expect(queryBus.execute).toBeCalledWith(new FindUsersQuery())
+      expect(queryBus.execute).toBeCalledTimes(1)
     })
   })
 })
