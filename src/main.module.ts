@@ -1,7 +1,7 @@
+import { CommonModule } from '@/common/common.module'
+import { DatabaseModule } from '@/database/database.module'
 import { Module } from '@nestjs/common'
 import { ConfigModule } from '@nestjs/config'
-import { CommonModule } from '@/common/common.module'
-import { appConfig } from '@/config/app.config'
 
 @Module({
   imports: [
@@ -9,10 +9,11 @@ import { appConfig } from '@/config/app.config'
       ignoreEnvFile: process.env.NODE_ENV === 'production',
       envFilePath: '.env',
       expandVariables: process.env.NODE_ENV !== 'production',
-      cache: true
+      cache: true,
+      isGlobal: true
     }),
-    ConfigModule.forFeature(appConfig()),
-    CommonModule
+    CommonModule,
+    DatabaseModule
   ]
 })
 export class MainModule {}

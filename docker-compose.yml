@@ -1,16 +1,36 @@
 version: "3.7"
 services:
-  
-  start-kit:
+  mysql:
+    container_name: mysql
+    image: mysql:latest
+    command: --default-authentication-plugin=mysql_native_password
+    expose:
+      - 3306
+    ports:
+      - 3306:3306
+    volumes:
+      - ./docker/database.sql:/docker-entrypoint-initdb.d/init.sql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+
+  iam:
     image: node:16-alpine
-    container_name: start-kit
+    container_name: iam
     working_dir: /usr/src/app
-    command: ["yarn", "start:dev"]
+    command: ["npm", "run", "start:dev"]
     expose:
       - 3000
-      - 9229
     ports:
       - 3000:3000
-      - 9229:9229
     volumes:
       - ./:/usr/src/app:rw
+
+  iam-prd:
+    image: iam:latest
+    container_name: iam
+    expose:
+      - 3000
+    ports:
+      - 3000:3000
+    env_file:
+      - .env
