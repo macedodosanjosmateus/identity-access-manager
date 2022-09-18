@@ -21,4 +21,4 @@ COPY --from=builder /usr/src/app/dist ./dist
 COPY --from=deps /usr/src/app/node_modules ./node_modules
 ENV LISTEN_PORT=3000
 EXPOSE $LISTEN_PORT
-CMD [ "node", "dist/src/main" ]
+CMD [ "node", "dist/main" ]
